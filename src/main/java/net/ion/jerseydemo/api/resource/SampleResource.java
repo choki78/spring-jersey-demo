@@ -1,9 +1,10 @@
-package net.ion.jerseydemo.api.endpoint;
+package net.ion.jerseydemo.api.resource;
 
 import net.ion.jerseydemo.api.service.SampleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -18,7 +19,7 @@ import java.util.Map;
  */
 @Component
 @Path("/sample")
-public class SampleEndpoint {
+public class SampleResource {
     @Autowired
     private SampleService sampleService;
 
@@ -39,7 +40,7 @@ public class SampleEndpoint {
     @Path("/view")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces("application/json")
-    public Response viewFormParam(@FormParam("id") String id) throws URISyntaxException {
+    public Response viewFormParam(@FormParam("id") @NotNull String id) throws URISyntaxException {
         Map<String, Object> result = new HashMap<>();
         sampleService.setMsg(id);
         String msg = sampleService.getMessage();

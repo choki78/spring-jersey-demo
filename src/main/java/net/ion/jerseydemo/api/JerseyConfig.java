@@ -1,6 +1,6 @@
 package net.ion.jerseydemo.api;
 
-import net.ion.jerseydemo.api.endpoint.SampleEndpoint;
+import net.ion.jerseydemo.api.resource.SampleResource;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
 
@@ -11,6 +11,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class JerseyConfig extends ResourceConfig {
     public JerseyConfig() {
-        register(SampleEndpoint.class);
+        register(SampleResource.class);
     }
 }
